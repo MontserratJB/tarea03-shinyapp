@@ -47,9 +47,9 @@ lista_distritos <- sort(lista_distritos)
 lista_distritos <- c("Todas", lista_distritos)
 
 # Lista ordenada de numero de proyecto por distrito + "Todas"
-lista_proyectos <- unique(presupuesto$No_Proyecto)
-lista_proyectos <- sort(lista_proyectos)
-lista_proyectos <- c("Todas", lista_proyectos)
+lista_estados <- unique(presupuesto$Estado)
+lista_estados <- sort(lista_estados)
+lista_estados <- c("Todas", lista_estados)
 
 
 # Componentes de la aplicación Shiny
@@ -67,9 +67,9 @@ ui <-
                     selected = "Todas"
                 ),
                 selectInput(
-                    inputId = "num_proyecto",
-                    label = "Numero de proyecto por distrito",
-                    choices = lista_proyectos,
+                    inputId = "estado",
+                    label = "Estado del proyecto",
+                    choices = lista_estados,
                     selected = "Todas"
                 ),
                 startExpanded = TRUE
@@ -111,10 +111,10 @@ server <- function(input, output, session) {
                 filter(Distrito == input$distrito)
         }
         # Filtrado de felidae por provincia
-        if (input$num_proyecto != "Todas") {
+        if (input$estado != "Todas") {
             presupuesto_filtrado <-
                 presupuesto_filtrado %>%
-                filter(No_Proyecto == input$num_proyecto)
+                filter(Estado == input$estado)
         }
         
         return(presupuesto_filtrado)

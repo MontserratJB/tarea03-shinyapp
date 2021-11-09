@@ -1,4 +1,4 @@
-OBJECTID;No_Proyecto;Inversion;Presupuesto;Estado;Distrito;decimalLongitude;decimalLatitude;Estado
+OBJECTID;No_Proyecto;Inversion;Presupuesto;Estado01;Distrito;decimalLongitude;decimalLatitude;Estado
 1;1;Mantenimiento al establecimiento del CEN CINAI en Vargas Araya;34802450;Reactivado;San Pedro;-84.03553;9.936614;Finalizado
 2;2;Construccion de un aula tecnologica en la Escuela de Santa Marta;12000000;Reactivado;San Pedro;-84.035003;9.931748;Finalizado
 3;3;Construccion de cancha multiple techada para la Escuela Barrio Pinto;24656869;Reactivado;San Pedro;-84.047399;9.926223;Finalizado
