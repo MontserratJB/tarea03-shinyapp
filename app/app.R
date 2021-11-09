@@ -23,13 +23,16 @@ distritos <-
 # Lectura de un archivo CSV con datos de Presupuestos participativos en Montes de Oca
 presupuesto <-
     st_read(
-        "/vsicurl/https://raw.githubusercontent.com/MontserratJB/Proyecto-2021/master/Pres_part.csv",
+        "/vsicurl/https://raw.githubusercontent.com/MontserratJB/tarea03-shinyapp/master/Pres_part.csv",
         options = c(
             "X_POSSIBLE_NAMES=decimalLongitude",
             "Y_POSSIBLE_NAMES=decimalLatitude"
         ),
         quiet = TRUE
     )
+
+# Asignación de un CRS al objeto felidae
+st_crs(presupuesto) <- 4326
 
 # Lectura de una capa raster de altitud
 altitud <-
@@ -44,7 +47,7 @@ lista_distritos <- sort(lista_distritos)
 lista_distritos <- c("Todas", lista_distritos)
 
 # Lista ordenada de numero de proyecto por distrito + "Todas"
-lista_proyectos <- unique(presupuesto$No_proyecto)
+lista_proyectos <- unique(presupuesto$No_Proyecto)
 lista_proyectos <- sort(lista_proyectos)
 lista_proyectos <- c("Todas", lista_proyectos)
 
@@ -64,12 +67,14 @@ ui <-
                     selected = "Todas"
                 ),
                 selectInput(
-                    inputId = "no_proyecto",
+                    inputId = "num_proyecto",
                     label = "Numero de proyecto por distrito",
                     choices = lista_proyectos,
                     selected = "Todas"
-                )
-        )),
+                ),
+                startExpanded = TRUE
+                ) 
+              )),
         dashboardBody(fluidRow(
             box(
                 title = "Mapa de Presupuestos Participativos",
@@ -77,7 +82,7 @@ ui <-
                 width = 6
             ),
             box(
-                title = "Gráfico Presupuestos",
+                title = "Tabla de proyectos",
                 DTOutput(outputId = "tabla"),
                 width = 6
             )
@@ -85,7 +90,7 @@ ui <-
         fluidRow(
             box(
                 title = "Grafico por Distrito",
-                plotlyOutput(outputId = "grafico_estacionalidad"),
+                plotlyOutput(outputId = "grafico_distritos"),
                 width = 12
             )      
         ))
@@ -97,7 +102,7 @@ server <- function(input, output, session) {
         # Remoción de geometrías y selección de columnas
         presupuesto_filtrado <-
             presupuesto %>%
-            dplyr::select(Distrito, No_proyecto)
+            dplyr::select(Distrito, No_Proyecto)
         
         # Filtrado de felidae por especie
         if (input$distrito != "Todas") {
@@ -106,13 +111,13 @@ server <- function(input, output, session) {
                 filter(Distrito == input$distrito)
         }
         # Filtrado de felidae por provincia
-        if (input$No_proyecto != "Todas") {
+        if (input$num_proyecto != "Todas") {
             presupuesto_filtrado <-
                 presupuesto_filtrado %>%
-                filter(stateProvince == input$provincia)
+                filter(No_Proyecto == input$num_proyecto)
         }
         
-        return(felidae_filtrado)
+        return(presupuesto_filtrado)
     })
     
     output$mapa <- renderLeaflet({
@@ -122,16 +127,16 @@ server <- function(input, output, session) {
         # Conversión del objeto altitud a la clase RasterLayer
         altitud_rl <- raster::raster(altitud)
         
-        # Mapa Leaflet con capas de provincias y registros de presencia de felinos
+        # Mapa Leaflet con capas de distritos y registros de presupuestos participativos en Montes de Oca
         leaflet() %>%
-            setView(lng = -84.19452,
-                    lat = 9.572735,
-                    zoom = 7) %>%
+            setView(lng = -84.01705,
+                    lat = 9.940166,
+                    zoom = 13) %>%
             addTiles() %>%
             addRasterImage(altitud_rl,
                            opacity = 0.6) %>%
             addPolygons(
-                data = provincias,
+                data = distritos,
                 color = "black",
                 fillColor = "transparent",
                 stroke = TRUE,
@@ -144,11 +149,11 @@ server <- function(input, output, session) {
                 fillColor = 'red',
                 fillOpacity = 1,
                 label = paste0(
-                    registros$species,
+                    registros$No_Proyecto,
                     ", ",
-                    registros$stateProvince,
+                    registros$Distrito,
                     ", ",
-                    registros$eventDate
+                    registros$Inversion
                 )
             )
     })
@@ -161,27 +166,21 @@ server <- function(input, output, session) {
             datatable()
     })
     
-    output$grafico_estacionalidad <- renderPlotly({
+    output$grafico_distritos <- renderPlotly({
         registros <- filtrarRegistros()
         
         registros %>%
             st_drop_geometry() %>%
-            group_by(mes = format(as.Date(eventDate, "%Y-%m-%d"), "%m")) %>%
-            summarize(suma_registros = n()) %>%
-            filter(!is.na(mes))  %>%
-            plot_ly(
-                x = ~ mes,
-                y = ~ suma_registros,
-                type = "scatter",
-                mode = "markers",
-                fill = "tozeroy",
-                fillcolor = "green"
-            ) %>%
-            layout(
-                xaxis = list(title = "Mes"),
-                yaxis = list(title = "Cantidad de registros")
-            )
-        
+            group_by(Distrito) %>%
+            summarize(suma_proyectos = n()) %>%
+            plot_ly(x = ~ Distrito,
+                    y = ~ suma_proyectos,
+                    type="bar", mode="markers", fill = "tozeroy", fillcolor = "green") %>%
+            layout(title = "Proyectos por Distrito",
+                   xaxis = list(title = "Distritos"),
+                   yaxis = list(title = "Número de proyectos")) %>%
+            config(locale = "es")
+            
     })
 }
 

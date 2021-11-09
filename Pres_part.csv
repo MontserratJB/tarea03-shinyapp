@@ -1,20 +1,20 @@
-OBJECTID;No_Proyecto;Inversion;Presupuesto;Estado;Distrito;decimalLongitude;decimalLatitude
-1;1;Mantenimiento al establecimiento del CEN CINAI en Vargas Araya;34802450;Reactivado;San Pedro;-84.03553;9.936614
-2;2;Construccion de un aula tecnologica en la Escuela de Santa Marta;12000000;Reactivado;San Pedro;-84.035003;9.931748
-3;3;Construccion de cancha multiple techada para la Escuela Barrio Pinto;24656869;Reactivado;San Pedro;-84.047399;9.926223
-4;4;Restauracion y mejoras al salon comunal de la Urbanizacion el Cedral;23030992;Reactivado;San Pedro;-84.030639;9.937099
-5;1;Remodelacion de la fachada del kinder Escuela Inglaterra;2400000;Reactivado;San Rafael;-84.017373;9.943328
-6;2;Construccion de Aceras en Salitrillos y Karpinsky;20937000;Reactivado;San Rafael;-84.006338;9.946162
-7;3;Parque ecologico y recreativo Residencial Sol del Este, I Etapa;34190758.02;Reactivado;San Rafael;-83.996827;9.943282
-8;4;Area Recreativa Urbanizaci_n Senderos del Bosque;21000000;Reactivado;San Rafael;-84.016804;9.940359
-9;5;Colocacion de malla ciclon en el parque Urb. Alfred Nobel;1000000;Reactivado;San Rafael;-84.024479;9.93827
-10;2;Recuperacion del espacio Publico verde en la Urbanizacion La Arboleda;10570000;Reactivado;Sabanilla;-84.032293;9.94143
-12;3;Construccion del parque Urbanizacion Paso Real;8400000;Reactivado;Sabanilla;-84.037348;9.948816
-13;1;Remodelacion y mejoras de acera y puente peatonal en Betania, colocacion de rotulos en parques e imprevistos;8040000;Reactivado;Mercedes;-84.053687;9.939565
-14;4;Salon multifuncional, Residencial Ana Maria Guardia;9500000;Reactivado;Sabanilla;-84.02659;9.939341
-15;2;Mejoras y mantenimiento del parque Alma Mater Calle C;4975000;Reactivado;Mercedes;-84.041985;9.945411
-16;3;Reconstruccion de calle de baloncesto del parque 1 Alma Mater Calle B;8553457.12;Reactivado;Mercedes;-84.042208;9.944789
-17;4;Ampliacion vertical de malla metalica sur y norte, parque 1 Amla Mater Calle B ;4272000;Reactivado;Mercedes;-84.042518;9.944742
-19;5;Estilos de vida saludable y accesibilidad parque Residencial Guaymi;7015000;Reactivado;Mercedes;-84.050121;9.9431
-20;1;Confeccion de planos constructivos, especificaciones tecnicas y presupuesto para construccion de una sede para el grupo Scout 160;6000000;Reactivado;Sabanilla;-84.050009;9.928442
-21;6;Rotulos para los parques de Betania, Alma Mater calle B, Profesores, Harvard, Buenos Aires 1 y Guaymi;600000;Reactivado;Mercedes;-84.042043;9.9448
+OBJECTID;No_Proyecto;Inversion;Presupuesto;Estado;Distrito;decimalLongitude;decimalLatitude;Estado
+1;1;Mantenimiento al establecimiento del CEN CINAI en Vargas Araya;34802450;Reactivado;San Pedro;-84.03553;9.936614;Finalizado
+2;2;Construccion de un aula tecnologica en la Escuela de Santa Marta;12000000;Reactivado;San Pedro;-84.035003;9.931748;Finalizado
+3;3;Construccion de cancha multiple techada para la Escuela Barrio Pinto;24656869;Reactivado;San Pedro;-84.047399;9.926223;Finalizado
+4;4;Restauracion y mejoras al salon comunal de la Urbanizacion el Cedral;23030992;Reactivado;San Pedro;-84.030639;9.937099;Finalizado
+5;1;Remodelacion de la fachada del kinder Escuela Inglaterra;2400000;Reactivado;San Rafael;-84.017373;9.943328;Finalizado
+6;2;Construccion de Aceras en Salitrillos y Karpinsky;20937000;Reactivado;San Rafael;-84.006338;9.946162;En proceso
+7;3;Parque ecologico y recreativo Residencial Sol del Este, I Etapa;34190758.02;Reactivado;San Rafael;-83.996827;9.943282;Finalizado
+8;4;Area Recreativa Urbanizaci_n Senderos del Bosque;21000000;Reactivado;San Rafael;-84.016804;9.940359;Finalizado
+9;5;Colocacion de malla ciclon en el parque Urb. Alfred Nobel;1000000;Reactivado;San Rafael;-84.024479;9.93827;En proceso
+10;2;Recuperacion del espacio Publico verde en la Urbanizacion La Arboleda;10570000;Reactivado;Sabanilla;-84.032293;9.94143;En proceso
+12;3;Construccion del parque Urbanizacion Paso Real;8400000;Reactivado;Sabanilla;-84.037348;9.948816;En proceso
+13;1;Remodelacion y mejoras de acera y puente peatonal en Betania, colocacion de rotulos en parques e imprevistos;8040000;Reactivado;Mercedes;-84.053687;9.939565;En proceso
+14;4;Salon multifuncional, Residencial Ana Maria Guardia;9500000;Reactivado;Sabanilla;-84.02659;9.939341;Finalizado
+15;2;Mejoras y mantenimiento del parque Alma Mater Calle C;4975000;Reactivado;Mercedes;-84.041985;9.945411;En proceso
+16;3;Reconstruccion de calle de baloncesto del parque 1 Alma Mater Calle B;8553457.12;Reactivado;Mercedes;-84.042208;9.944789;Finalizado
+17;4;Ampliacion vertical de malla metalica sur y norte, parque 1 Amla Mater Calle B ;4272000;Reactivado;Mercedes;-84.042518;9.944742;En proceso
+19;5;Estilos de vida saludable y accesibilidad parque Residencial Guaymi;7015000;Reactivado;Mercedes;-84.050121;9.9431;Finalizado
+20;1;Confeccion de planos constructivos, especificaciones tecnicas y presupuesto para construccion de una sede para el grupo Scout 160;6000000;Reactivado;San Pedro;-84.050009;9.928442;Finalizado
+21;6;Rotulos para los parques de Betania, Alma Mater calle B, Profesores, Harvard, Buenos Aires 1 y Guaymi;600000;Reactivado;Mercedes;-84.042043;9.9448;Finalizado
